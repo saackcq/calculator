@@ -19,7 +19,7 @@ const opera = ['+', '-', '*', '/'];
     pantalla.textContent = num;                        
   } else  {
     pantalla.textContent += num;                    
-     numnew = true;                            
+                               
   }
  
  
@@ -28,18 +28,21 @@ const opera = ['+', '-', '*', '/'];
 
   function addOperator(op) {
       
-    let lastc = pantalla.textContent[pantalla.textContent.length - 1]; 
-    if ( opera.includes(lastc) ) return;                                // NO PERMITE INGRESAR UN OPERADOR DESPUES DE OTRO OPERADOR
-    if (lastc === '.') return;                                          // NO PERMITE INGRESAR UN OPERADOR DESPUES DE UN PUNTO
+    let lastc = pantalla.textContent[pantalla.textContent.length - 1];
+    // NO PERMITE INGRESAR UN OPERADOR DESPUES DE OTRO OPERADOR 
+    if ( opera.includes(lastc) ) return; 
+    // NO PERMITE INGRESAR UN OPERADOR DESPUES DE UN PUNTO                               
+    if (lastc === '.') return;                                          
 
 
    if (numnew) {
     calculate();
    }
-
-    pantalla.textContent += op;                                        // AGREGA EL OPERADOR A LA PANTALLA
-    operador = op;                                                     // ALMACENA EL OPERADOR SELECCIONADO PARA USARLO EN EL CALCULO               
-                     
+    // AGREGA EL OPERADOR A LA PANTALLA
+    pantalla.textContent += op;     
+    // ALMACENA EL OPERADOR SELECCIONADO PARA USARLO EN EL CALCULO                                      
+    operador = op;                                                                 
+    numnew = true;              
                                    
 }
 
@@ -53,20 +56,26 @@ const opera = ['+', '-', '*', '/'];
     num1 = array[0];                               
     num2 = array[1];
 
+
+    //EVALUA EL OPERADOR
     if (operador === '+') {
         pantalla.textContent = Number(num1) + Number(num2); 
-        historial.innerHTML += `<p class="operacion" style="cursor:pointer">${num1} ${operador} ${num2} = ${pantalla.textContent}</p>`;  
     }else if (operador === '-') {
         pantalla.textContent = Number(num1) - Number(num2);
-        historial.innerHTML += `<p class="operacion" style="cursor:pointer">${num1} ${operador} ${num2} = ${pantalla.textContent}</p>`;  
+        
     } else if (operador === '*') {                           
         pantalla.textContent = Number(num1) * Number(num2);
-        historial.innerHTML += `<p class="operacion" style="cursor:pointer">${num1} ${operador} ${num2} = ${pantalla.textContent}</p>`;  
+         
     } else if (operador === '/') {
         pantalla.textContent = Number(num1) / Number(num2);
-        historial.innerHTML += `<p class="operacion" style="cursor:pointer">${num1} ${operador} ${num2} = ${pantalla.textContent}</p>`;   
+         
     }
     
+    // AGREGA LAS OPERACIONES AL HISTORIAL
+    const nuevaEntrada = `<p class="operacion" style="cursor:pointer">${num1} ${operador} ${num2} = ${pantalla.textContent}</p>`;
+    historial.insertAdjacentHTML('beforeend', nuevaEntrada);
+
+
     numnew = false;
 
  
@@ -95,7 +104,6 @@ function addDecimal(point) {
 
 function clearDisplay() {
   pantalla.textContent = '0';
-
 }
 
 
