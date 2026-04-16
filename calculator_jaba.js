@@ -11,7 +11,7 @@ let listaHistorial = [];
 
 const opera = ['+', '-', '*', '/']; 
 
-let ultimo = pantalla.textContent[pantalla.textContent.length - 1];
+
 
  function addNumber(num) {
 
@@ -51,7 +51,7 @@ let ultimo = pantalla.textContent[pantalla.textContent.length - 1];
   function calculate() {
      
     // NO PERMITE CALCULAR SI SOLO HAY UN CERO
-    if (ultimo === '0') return; 
+    if (pantalla.textContent === '0') return; 
 
 
     let array = pantalla.textContent.split(/(?<=\d)[+\-*\/]/)  
