@@ -11,7 +11,7 @@ let listaHistorial = [];
 
 const opera = ['+', '-', '*', '/']; 
 
-
+let ultimo = pantalla.textContent[pantalla.textContent.length - 1];
 
  function addNumber(num) {
 
@@ -49,8 +49,11 @@ const opera = ['+', '-', '*', '/'];
 
 
   function calculate() {
-                  
-    
+     
+    // NO PERMITE CALCULAR SI SOLO HAY UN CERO
+    if (ultimo === '0') return; 
+
+
     let array = pantalla.textContent.split(/(?<=\d)[+\-*\/]/)  
     console.log(array);
     num1 = array[0];                               
@@ -104,12 +107,14 @@ function addDecimal(point) {
 
 function clearDisplay() {
   pantalla.textContent = '0';
+  
 }
 
 
 const supr = () => {
   const texto = pantalla.textContent;
   pantalla.textContent = texto.slice(0, -1);
+  numnew = false;
 }
 
 
@@ -123,8 +128,7 @@ const supr = () => {
 historial.addEventListener("click", function(e) {
     if (e.target.classList.contains("operacion")) {
         let texto = e.target.textContent;          
-        let resultado = texto.split("=")[1].trim(); 
-        pantalla.textContent = resultado;
+        pantalla.textContent = texto;
     }
 });
 
