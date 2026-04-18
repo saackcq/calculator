@@ -52,7 +52,7 @@ const opera = ['+', '-', '*', '/'];
      
     // NO PERMITE CALCULAR SI SOLO HAY UN CERO
     if (pantalla.textContent === '0') return; 
-
+    // NO PERMITE DOS IGUALES EN PANTALLA
     if (pantalla.textContent.includes('=')) return;
 
 
