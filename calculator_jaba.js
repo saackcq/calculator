@@ -11,7 +11,7 @@ let listaHistorial = [];
 
 const opera = ['+', '-', '*', '/']; 
 
-let ultimo = pantalla.textContent[pantalla.textContent.length - 1];
+
 
  function addNumber(num) {
 
@@ -51,7 +51,8 @@ let ultimo = pantalla.textContent[pantalla.textContent.length - 1];
   function calculate() {
      
     // NO PERMITE CALCULAR SI SOLO HAY UN CERO
-    if (ultimo === '0') return; 
+    
+    if (pantalla.textContent === '0') return; 
 
 
     let array = pantalla.textContent.split(/(?<=\d)[+\-*\/]/)  
@@ -80,7 +81,7 @@ let ultimo = pantalla.textContent[pantalla.textContent.length - 1];
 
 
     numnew = false;
-
+    
  
 }
 
@@ -90,6 +91,8 @@ function addDecimal(point) {
   // NO PERMITE MAS DE UN PUNTO SEGUIDO
   const last = pantalla.textContent[pantalla.textContent.length - 1];
   if (last === '.') return;  
+  // NO PERMITE INGRESAR UN PUNTO SI LA PANTALLA ESTA VACIA
+  if (pantalla.textContent === "") return;
   
   // NO PERMITE INGRESAR UN PUNTO DESPUES DE UN NUMERO CON PUNTO
   const ptwo = pantalla.textContent[pantalla.textContent.length - 2];
