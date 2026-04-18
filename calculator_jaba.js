@@ -51,11 +51,9 @@ const opera = ['+', '-', '*', '/'];
   function calculate() {
      
     // NO PERMITE CALCULAR SI SOLO HAY UN CERO
-<<<<<<< HEAD
-    
-=======
->>>>>>> 92302e6cee2688cf42223f623ab540459b1ba7fa
     if (pantalla.textContent === '0') return; 
+
+    if (pantalla.textContent.includes('=')) return;
 
 
     let array = pantalla.textContent.split(/(?<=\d)[+\-*\/]/)  
@@ -122,11 +120,6 @@ const supr = () => {
   pantalla.textContent = texto.slice(0, -1);
   numnew = false;
 }
-
-
-
-
-
 
 
 
