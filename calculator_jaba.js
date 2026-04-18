@@ -127,7 +127,9 @@ const supr = () => {
 historial.addEventListener("click", function(e) {
     if (e.target.classList.contains("operacion")) {
         let texto = e.target.textContent;          
-        pantalla.textContent = texto;
+        let partes = texto.split("=");
+        let resultado = partes[1].trim(); 
+        pantalla.textContent = resultado;
     }
 });
 
