@@ -150,7 +150,33 @@ historial.addEventListener("click", function(e) {
 });
 
 
+////////////////////////////////////////////////////////////
 
+
+document.querySelectorAll('#keyboard button').forEach(button => {
+    button.addEventListener('click', (e) => {
+        crearChispas(e);
+    });
+});
+
+function crearChispas(e) {
+    const chispas = ['⚡', '✦', '★', '⚡'];
+    
+    chispas.forEach((chispa, i) => {
+        const el = document.createElement('span');
+        el.textContent = chispa;
+        el.classList.add('chispa');
+        
+        // posición aleatoria alrededor del botón
+        el.style.left = e.clientX + (Math.random() * 40 - 20) + 'px';
+        el.style.top = e.clientY + (Math.random() * 40 - 20) + 'px';
+        
+        document.body.appendChild(el);
+        
+        // eliminar después de la animación
+        setTimeout(() => el.remove(), 600);
+    });
+}
 
 
 
