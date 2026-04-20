@@ -8,6 +8,8 @@ let operador = '';
 let numnew = false; 
 let punto = '';               
 let listaHistorial = [];                
+let contador = 0;
+
 
 const opera = ['+', '-', '*', '/']; 
 
@@ -28,6 +30,8 @@ const opera = ['+', '-', '*', '/'];
 
   function addOperator(op) {
       
+    
+
     let lastc = pantalla.textContent[pantalla.textContent.length - 1];
     // NO PERMITE INGRESAR UN OPERADOR DESPUES DE OTRO OPERADOR 
     if ( opera.includes(lastc) ) return; 
@@ -43,24 +47,31 @@ const opera = ['+', '-', '*', '/'];
     // ALMACENA EL OPERADOR SELECCIONADO PARA USARLO EN EL CALCULO                                      
     operador = op;                                                                 
     numnew = true;              
-                                   
+    contador = 0;                               
 }
 
 
 
   function calculate() {
      
+    
+
+    // NO PERMITE CALCULAR SI NO HAY UN OPERADOR SELECCIONADO
+    if (!operador) return;
     // NO PERMITE CALCULAR SI SOLO HAY UN CERO
     if (pantalla.textContent === '0') return; 
     // NO PERMITE DOS IGUALES EN PANTALLA
     if (pantalla.textContent.includes('=')) return;
-
+    
 
     let array = pantalla.textContent.split(/(?<=\d)[+\-*\/]/)  
     console.log(array);
     num1 = array[0];                               
     num2 = array[1];
 
+    // NO PERMITE CALCULAR SI NO HAY UN SEGUNDO NUMERO
+    if (!num2) return;
+    
 
     //EVALUA EL OPERADOR
     if (operador === '+') {
@@ -82,13 +93,16 @@ const opera = ['+', '-', '*', '/'];
 
 
     numnew = false;
-    
+    contador = 0;
  
 }
 
 
 function addDecimal(point) {
-  
+
+  // UN PUNTO POR NUMERO
+  if (contador === 1) return;
+
   // NO PERMITE MAS DE UN PUNTO SEGUIDO
   const last = pantalla.textContent[pantalla.textContent.length - 1];
   if (last === '.') return;  
@@ -100,10 +114,11 @@ function addDecimal(point) {
   if (ptwo === '.') return;  
 
   // EVITA QUE SE INGRESE UN PUNTO DESPUES DE UN OPERADOR
-  if (opera.includes(last)) return;  
+  if (opera.includes(last)) return; 
 
   pantalla.textContent += point;
-
+  contador++;
+ 
 }
 
 
@@ -130,6 +145,7 @@ historial.addEventListener("click", function(e) {
         let partes = texto.split("=");
         let resultado = partes[1].trim(); 
         pantalla.textContent = resultado;
+        numnew = false;
     }
 });
 

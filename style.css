@@ -1,0 +1,83 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    margin: 0;           /* Elimina los márgenes por defecto del navegador */
+    display: flex;
+    justify-content: center; /* Centro horizontal */
+    align-items: center;     /* Centro vertical */
+    height: 100vh;       /* 100vh = 100% de la altura de la ventana */
+    width: 100vw;
+    background-color: #27DAF5;
+}
+
+#content {
+    border: 2px solid black;
+    border-radius: 5px;
+    padding: 10px;
+    width: 360px;
+    background-color: #F5E027;
+}
+
+#pantalla {
+    border: 2px solid black;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 10px;
+    font-size: 24px;
+}
+
+#main {
+    display: flex;
+    gap: 10px;
+}
+
+#keyboard {
+    border: 2px solid black;
+    border-radius: 5px;
+    padding: 10px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 5px;
+    width: fit-content;
+}
+
+#keyboard button {
+    width: 50px;
+    height: 50px;
+    font-size: 18px;
+    font-family: inherit;
+    cursor: pointer;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f0f0f0;
+
+
+    background-color: #e0e0e0;
+    box-shadow: 0 5px 0 #999; /* sombra abajo = efecto 3D */
+    transform: translateY(0);
+    transition: all 0.1s;
+
+
+}
+
+
+#keyboard button:active {
+    box-shadow: 0 2px 0 #999; /* sombra más pequeña al presionar */
+    transform: translateY(3px); /* baja el botón */
+}
+
+
+
+
+#historial {
+    border: 2px solid black;
+    border-radius: 5px;
+    flex: 1;
+    min-height: 200px;
+    padding: 10px;
+}
+
